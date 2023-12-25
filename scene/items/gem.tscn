@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://f8o5flclpiwj"]
+
+[ext_resource type="Script" path="res://scripts/items/gem/gem.gd" id="1_sk7t8"]
+[ext_resource type="Texture2D" uid="uid://bcxbj10a71ox" path="res://assets/kenney_pixel-platformer/Tiles/tile_0067.png" id="2_g4nwx"]
+[ext_resource type="Script" path="res://scripts/items/gem/gem_sprite.gd" id="3_polqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2tfj"]
+
+[node name="Gem" type="Area2D"]
+position = Vector2(423, 45)
+script = ExtResource("1_sk7t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o2tfj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.05556, 1)
+texture = ExtResource("2_g4nwx")
+script = ExtResource("3_polqs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

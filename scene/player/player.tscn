@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5vblfxapdqfx"]
+[gd_scene load_steps=7 format=3 uid="uid://c5vblfxapdqfx"]
 
 [ext_resource type="Script" path="res://scene/player/player.gd" id="1_gyej5"]
 [ext_resource type="Texture2D" uid="uid://d1cqffv3mcjcd" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0000.png" id="2_b4xsr"]
 [ext_resource type="Texture2D" uid="uid://dypdbb2j4eqit" path="res://assets/kenney_pixel-platformer/Tiles/Characters/tile_0001.png" id="3_ovgmo"]
+[ext_resource type="AudioStream" uid="uid://woeoqqfk28aa" path="res://assets/sounds/gem_pick_up.mp3" id="4_c8iyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xueqv"]
 size = Vector2(12, 23)
@@ -37,3 +38,8 @@ shape = SubResource("RectangleShape2D_xueqv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fdwib")
 animation = &"Walking"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_c8iyc")
+volume_db = -20.0
+pitch_scale = 2.0

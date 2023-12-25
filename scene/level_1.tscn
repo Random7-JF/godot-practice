@@ -26,4 +26,5 @@ layer_2/tile_data = PackedInt32Array(-196613, 262144, 805306374, 262157, 655360,
 [node name="Player" parent="." instance=ExtResource("2_2ubc3")]
 position = Vector2(9, -20)
 
-[node name="Camera2D" parent="Player" instance=ExtResource("4_f6m66")]
+[node name="Camera2D" parent="Player" node_paths=PackedStringArray("tilemap") instance=ExtResource("4_f6m66")]
+tilemap = NodePath("../../World-Tilemap")
