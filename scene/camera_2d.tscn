@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccyujo142v1ar"]
+
+[ext_resource type="Script" path="res://scripts/camera/camera.gd" id="1_tkiv3"]
+
+[node name="Camera2D" type="Camera2D" node_paths=PackedStringArray("tilemap")]
+position = Vector2(-9, 20)
+process_callback = 0
+limit_left = 0
+script = ExtResource("1_tkiv3")
+tilemap = NodePath("")
+tilesize = 18
