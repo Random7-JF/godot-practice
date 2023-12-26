@@ -11,11 +11,14 @@ var healthScene = preload("res://scene/UI/heart.tscn")
 func update_gems_and_coins():
 	if player != null:
 		gemslabel.text = str(player.get_gems())
+		coinslabel.text = str(player.get_coins())
 		
 
 func update_health():
 	var current_hearts = healthcontainer.get_child_count()
-	var current_health = player.get_health()
+	var current_health = 0
+	if player != null:
+		current_health = player.get_health()
 	
 	if current_health / 2 > current_hearts:
 		var diff = current_health / 2 - current_hearts

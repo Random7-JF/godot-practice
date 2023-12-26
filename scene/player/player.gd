@@ -68,3 +68,6 @@ func get_gems():
 
 func get_coins():
 	return coins
+
+func add_coin(count = 1):
+	coins += count
