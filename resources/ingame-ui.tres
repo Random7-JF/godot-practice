@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bpjgpe87viqnx"]
+
+[ext_resource type="FontFile" uid="uid://dceeut2we5w40" path="res://resources/fonts/kenney_kenney-fonts/Fonts/Kenney Future.ttf" id="1_0ykjp"]
+
+[resource]
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_0ykjp")

@@ -1,11 +1,20 @@
 extends CharacterBody2D
 @export var SPEED = 250.0
 @export var JUMP_VELOCITY = -300.0
+#######
 var gems = 0
+var coins = 0
+var health = 10
+#######
 var can_climb = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("add_health"):
+		add_health()
+	if Input.is_action_just_pressed("del_health"):
+		del_health()
+		
 	var climb_direction
 	if can_climb:
 		climb_direction = Input.get_axis("move_up","move_down")
@@ -38,9 +47,24 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
+func add_health(count = 1):
+	health += 1
+	
+func del_health(count = 1):
+	health -= 1
+	
 func add_gem(count = 1):
 	gems += count
 
 func kill_oob():
 	print("Dead")
 	queue_free()
+	
+func get_health():
+	return health
+
+func get_gems():
+	return gems
+
+func get_coins():
+	return coins

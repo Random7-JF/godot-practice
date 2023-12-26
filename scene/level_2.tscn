@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkd8hq4xl86ym"]
+[gd_scene load_steps=14 format=3 uid="uid://dkd8hq4xl86ym"]
 
 [ext_resource type="TileSet" uid="uid://k6binv0apq2h" path="res://tilemaps/background-tilemap.tres" id="1_4palk"]
+[ext_resource type="PackedScene" uid="uid://fduxe6dp8kq7" path="res://scene/UI/ingame_ui.tscn" id="1_8drme"]
 [ext_resource type="PackedScene" uid="uid://c5vblfxapdqfx" path="res://scene/player/player.tscn" id="1_82stx"]
 [ext_resource type="TileSet" uid="uid://blywsfeheaat5" path="res://tilemaps/world-tilemap.tres" id="1_w60po"]
 [ext_resource type="PackedScene" uid="uid://ccyujo142v1ar" path="res://scene/camera_2d.tscn" id="2_w8xqw"]
@@ -20,6 +21,11 @@ size = Vector2(1400.5, 25.5)
 
 [node name="level_2" type="Node2D"]
 position = Vector2(13, -1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Ingame-UI" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("1_8drme")]
+player = NodePath("../../Player")
 
 [node name="Background-Tilemap" type="TileMap" parent="."]
 tile_set = ExtResource("1_4palk")

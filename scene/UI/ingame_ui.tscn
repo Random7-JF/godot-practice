@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://fduxe6dp8kq7"]
+
+[ext_resource type="Theme" uid="uid://bpjgpe87viqnx" path="res://resources/ingame-ui.tres" id="1_7v3js"]
+[ext_resource type="Texture2D" uid="uid://bcxbj10a71ox" path="res://assets/kenney_pixel-platformer/Tiles/tile_0067.png" id="1_omfo3"]
+[ext_resource type="Texture2D" uid="uid://brdmpwqgywstj" path="res://assets/kenney_pixel-platformer/Tiles/tile_0151.png" id="2_a3j1k"]
+[ext_resource type="Script" path="res://scene/UI/ingame_ui.gd" id="2_kmxxm"]
+
+[node name="Ingame-UI" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7v3js")
+script = ExtResource("2_kmxxm")
+
+[node name="Collections" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Collections"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+
+[node name="Collections-Grid" type="GridContainer" parent="Collections/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+
+[node name="Gems-TextureRect" type="TextureRect" parent="Collections/MarginContainer/Collections-Grid"]
+layout_mode = 2
+texture = ExtResource("1_omfo3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Gems-Label" type="Label" parent="Collections/MarginContainer/Collections-Grid"]
+texture_filter = 1
+layout_mode = 2
+text = "000"
+
+[node name="Coins-TextureRect" type="TextureRect" parent="Collections/MarginContainer/Collections-Grid"]
+layout_mode = 2
+texture = ExtResource("2_a3j1k")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Coins-Label" type="Label" parent="Collections/MarginContainer/Collections-Grid"]
+layout_mode = 2
+text = "000"
+
+[node name="Health" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Health"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Health/MarginContainer"]
+layout_mode = 2
+
+[node name="HealthBar-Container" type="HBoxContainer" parent="Health/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
