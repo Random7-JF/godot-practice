@@ -1,16 +1,15 @@
 extends CharacterBody2D
-
 @export var SPEED = 250.0
 @export var JUMP_VELOCITY = -300.0
-
-@onready var SoundEffect = $AudioStreamPlayer2D
-@onready var GemPickupSound: AudioStream = preload("res://assets/sounds/gem_pick_up.mp3")
 var gems = 0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+var can_climb = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	var climb_direction
+	if can_climb:
+		climb_direction = Input.get_axis("move_up","move_down")
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -29,16 +28,15 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 	else:
 		$AnimatedSprite2D.flip_h = false
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	if climb_direction:
+		velocity.y = climb_direction * SPEED
+		
 	move_and_slide()
-
+	
 func add_gem(count = 1):
 	gems += count
-	SoundEffect.set_stream(GemPickupSound)
-	SoundEffect.set_volume_db(-20.0)
-	SoundEffect.set_pitch_scale(2.0)
-	SoundEffect.play()

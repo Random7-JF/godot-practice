@@ -7,15 +7,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2tfj"]
 
 [node name="Gem" type="Area2D"]
-position = Vector2(423, 45)
 script = ExtResource("1_sk7t8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o2tfj")
+metadata/_edit_lock_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(1.05556, 1)
 texture = ExtResource("2_g4nwx")
 script = ExtResource("3_polqs")
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

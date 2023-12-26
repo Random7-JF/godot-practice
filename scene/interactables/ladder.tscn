@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkkc88ijtt1y1"]
+
+[ext_resource type="Script" path="res://scripts/interactables/ladder.gd" id="1_cd4x1"]
+[ext_resource type="Texture2D" uid="uid://m0s1a1asoe6s" path="res://assets/kenney_pixel-platformer/Tiles/tile_0071.png" id="2_8h0ut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itdrm"]
+
+[node name="Ladder" type="Area2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_cd4x1")
+
+[node name="Ladder-Segment" type="Sprite2D" parent="."]
+texture = ExtResource("2_8h0ut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_itdrm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
