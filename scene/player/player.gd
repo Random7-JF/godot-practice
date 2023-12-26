@@ -40,3 +40,7 @@ func _physics_process(delta):
 	
 func add_gem(count = 1):
 	gems += count
+
+func kill_oob():
+	print("Dead")
+	queue_free()
