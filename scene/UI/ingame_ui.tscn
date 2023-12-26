@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://fduxe6dp8kq7"]
+[gd_scene load_steps=6 format=3 uid="uid://fduxe6dp8kq7"]
 
 [ext_resource type="Theme" uid="uid://bpjgpe87viqnx" path="res://resources/ingame-ui.tres" id="1_7v3js"]
 [ext_resource type="Texture2D" uid="uid://bcxbj10a71ox" path="res://assets/kenney_pixel-platformer/Tiles/tile_0067.png" id="1_omfo3"]
 [ext_resource type="Texture2D" uid="uid://brdmpwqgywstj" path="res://assets/kenney_pixel-platformer/Tiles/tile_0151.png" id="2_a3j1k"]
 [ext_resource type="Script" path="res://scene/UI/ingame_ui.gd" id="2_kmxxm"]
+[ext_resource type="Texture2D" uid="uid://dnvmllpumgst2" path="res://assets/kenney_pixel-platformer/Tiles/tile_0027.png" id="5_2jqp0"]
 
 [node name="Ingame-UI" type="Control"]
 texture_filter = 1
@@ -56,6 +57,16 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Coins-Label" type="Label" parent="Collections/MarginContainer/Collections-Grid"]
+layout_mode = 2
+text = "000"
+
+[node name="Keys-TextureRect" type="TextureRect" parent="Collections/MarginContainer/Collections-Grid"]
+layout_mode = 2
+texture = ExtResource("5_2jqp0")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Keys-Label" type="Label" parent="Collections/MarginContainer/Collections-Grid"]
 layout_mode = 2
 text = "000"
 

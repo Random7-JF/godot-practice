@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b75bbxwkts7w6"]
+
+[ext_resource type="Script" path="res://scripts/items/keybox/key.gd" id="1_3ufil"]
+[ext_resource type="Texture2D" uid="uid://dnvmllpumgst2" path="res://assets/kenney_pixel-platformer/Tiles/tile_0027.png" id="1_n1x76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fd7j4"]
+
+[node name="Key" type="CharacterBody2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_3ufil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fd7j4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fd7j4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n1x76")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

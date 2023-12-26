@@ -5,3 +5,5 @@
 [resource]
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_0ykjp")
+MenuButton/font_sizes/font_size = 32
+MenuButton/fonts/font = ExtResource("1_0ykjp")

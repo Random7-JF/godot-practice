@@ -5,6 +5,7 @@ extends CharacterBody2D
 var gems = 0
 var coins = 0
 var health = 10
+var keys = 0
 #######
 var can_climb = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -71,3 +72,9 @@ func get_coins():
 
 func add_coin(count = 1):
 	coins += count
+
+func add_key():
+	keys += 1
+
+func get_keys():
+	return keys

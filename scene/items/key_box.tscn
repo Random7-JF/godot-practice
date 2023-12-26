@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccag0o8f57p4o"]
+
+[ext_resource type="Texture2D" uid="uid://ckv0ds0rji10i" path="res://assets/kenney_pixel-platformer/Tiles/tile_0010.png" id="1_f27kk"]
+[ext_resource type="Script" path="res://scripts/items/keybox/keybox.gd" id="1_xbvbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tusq"]
+
+[node name="KeyBox" type="Area2D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_xbvbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7tusq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f27kk")
+
+[node name="KeySpawn" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

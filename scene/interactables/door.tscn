@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3d4m0eyvysls"]
+
+[ext_resource type="Script" path="res://scripts/interactables/door.gd" id="1_acf5b"]
+[ext_resource type="Texture2D" uid="uid://26it0oav3uy4" path="res://assets/kenney_pixel-platformer/Tiles/tile_0110.png" id="1_cumcy"]
+[ext_resource type="Texture2D" uid="uid://co1qc2eqib7bc" path="res://assets/kenney_pixel-platformer/Tiles/tile_0150.png" id="2_gdd5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrbkd"]
+size = Vector2(20, 24)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_acf5b")
+
+[node name="DoorTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTrigger"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_yrbkd")
+
+[node name="DoorTop" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("1_cumcy")
+metadata/_edit_lock_ = true
+
+[node name="DoorBottom" type="Sprite2D" parent="."]
+texture = ExtResource("2_gdd5w")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="DoorTrigger" to="." method="_on_door_trigger_body_entered"]

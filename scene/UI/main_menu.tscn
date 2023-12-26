@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://0qpxniiaa0w8"]
+
+[ext_resource type="Theme" uid="uid://bpjgpe87viqnx" path="res://resources/ingame-ui.tres" id="1_s7855"]
+[ext_resource type="Script" path="res://scripts/ui/Main Menu.gd" id="2_qi5bj"]
+
+[node name="Main Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_s7855")
+script = ExtResource("2_qi5bj")
+
+[node name="Main Menu Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main Menu Panel/VBoxContainer"]
+layout_mode = 2
+text = "Godot Practice"
+
+[node name="Spacer" type="Label" parent="Main Menu Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Main Menu Panel/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Spacer2" type="Label" parent="Main Menu Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Main Menu Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Main Menu Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main Menu Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
