@@ -22,7 +22,6 @@ size = Vector2(1400.5, 25.5)
 position = Vector2(13, -1)
 
 [node name="Background-Tilemap" type="TileMap" parent="."]
-visible = false
 tile_set = ExtResource("1_4palk")
 rendering_quadrant_size = 24
 format = 2
@@ -64,36 +63,42 @@ position = Vector2(0, 21)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_ws8xr")
+metadata/_edit_lock_ = true
 
 [node name="Ladder6" parent="Items_Interactables/Ladder" instance=ExtResource("6_d2dvf")]
 position = Vector2(0, 39)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_ws8xr")
+metadata/_edit_lock_ = true
 
 [node name="Ladder2" parent="Items_Interactables/Ladder" instance=ExtResource("6_d2dvf")]
 position = Vector2(0, 3)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_ws8xr")
+metadata/_edit_lock_ = true
 
 [node name="Ladder4" parent="Items_Interactables/Ladder" instance=ExtResource("6_d2dvf")]
 position = Vector2(0, -33)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_ws8xr")
+metadata/_edit_lock_ = true
 
 [node name="Ladder3" parent="Items_Interactables/Ladder" instance=ExtResource("6_d2dvf")]
 position = Vector2(0, -15)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_ws8xr")
+metadata/_edit_lock_ = true
 
 [node name="Ladder5" parent="Items_Interactables/Ladder" instance=ExtResource("6_d2dvf")]
 position = Vector2(0, -51)
 collision_layer = 8
 collision_mask = 8
 Ladder_Sprite = ExtResource("7_rs7ty")
+metadata/_edit_lock_ = true
 
 [node name="Ladder2" type="Node2D" parent="Items_Interactables"]
 position = Vector2(1035, 81)
@@ -113,6 +118,7 @@ Ladder_Sprite = ExtResource("7_rs7ty")
 metadata/_edit_lock_ = true
 
 [node name="Boundries" type="Node2D" parent="."]
+visible = false
 
 [node name="Left Wall" type="StaticBody2D" parent="Boundries"]
 collision_layer = 15
