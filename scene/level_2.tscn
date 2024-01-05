@@ -210,7 +210,8 @@ shape = SubResource("RectangleShape2D_ncxri")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Ingame-UI" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("1_8drme")]
+[node name="Ingame-UI" parent="UI" node_paths=PackedStringArray("player", "UI_layer") instance=ExtResource("1_8drme")]
 player = NodePath("../../Player")
+UI_layer = NodePath("..")
 
 [connection signal="body_entered" from="Boundries/Bottom Wall" to="Boundries/Bottom Wall" method="_on_body_entered"]
