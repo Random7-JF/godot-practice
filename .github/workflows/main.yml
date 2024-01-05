@@ -1,42 +1,28 @@
 name: Build Godot Project
 
 on:
-  push: {}
-  pull_request: {}
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
 
 jobs:
-  exports:
-    name: Export from Godot
-    strategy:
-      matrix:
-        include:
-          - preset: Web
-            export_file: index.html
-          - preset: WindowsDesktop
-            export_file: godot-prac.exe
-          - preset: Linux/X11
-            export_file: godot-prac
+  export_web:
+    name: Export
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
-      - run: echo "version=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-      - name: Export ${{ matrix.preset }} from Godot
-        uses: robpc/godot-export-action@v4.2
+
+      - name: Godot-export
+        id: export
+        uses: firebelley/godot-export@v5.0.0
         with:
-          preset: ${{ matrix.preset }}
-          export_path: build/${{ matrix.preset }}/${{ matrix.export_file }}
-      - name: Bundle ${{ matrix.preset }} export
-        uses: montudor/action-zip@v0.1.1
-        with:
-          args: >-
-            zip --junk-paths --recurse-paths
-            build/${{ env.package_prefix }}-v${{ env.version }}-${{ matrix.preset }}.zip
-            build/${{ matrix.preset }}
-      - name: Upload package
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: build/*.zip
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
+          relative_project_path: ./
+          archive_output: true
+          use_preset_export_path: true
+          export_debug: false
