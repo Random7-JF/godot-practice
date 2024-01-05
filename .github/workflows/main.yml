@@ -5,18 +5,38 @@ on:
   pull_request: {}
 
 jobs:
-  Windows-Build:
+  exports:
+    name: Export from Godot
+    strategy:
+      matrix:
+        include:
+          - preset: html
+            export_file: index.html
+          - preset: windows
+            export_file: godot-prac.exe
+          - preset: linux
+            export_file: godot-prac
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v2
         with:
           lfs: true
-      - name: Godot Headless Build
-        # You may pin to the exact commit or the version.
-        # uses: robpc/godot-export-action@2f0e808a7acdd7b4d60bc9eeb57379ee9a6b51ab
-        uses: robpc/godot-export-action@v4.2-0
+      - run: echo "version=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      - name: Export ${{ matrix.preset }} from Godot
+        uses: robpc/godot-export-action@v4.2
         with:
-          # name of the export preset
-          preset: windowsDesktop
-          # export path for the executable
-          export_path: ..\build\godot.exe          
+          preset: ${{ matrix.preset }}
+          export_path: build/${{ matrix.preset }}/${{ matrix.export_file }}
+      - name: Bundle ${{ matrix.preset }} export
+        uses: montudor/action-zip@v0.1.1
+        with:
+          args: >-
+            zip --junk-paths --recurse-paths
+            build/${{ env.package_prefix }}-v${{ env.version }}-${{ matrix.preset }}.zip
+            build/${{ matrix.preset }}
+      - name: Upload package
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build/*.zip
