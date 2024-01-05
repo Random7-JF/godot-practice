@@ -30,7 +30,7 @@ jobs:
       - name: Upload web build to itch
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
-          butlerApiKey: ${{ secrets.ITCH_IO }}
+          butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
           gameData: ./bin/web/web.zip
           itchUsername: random7
           itchGameId: godot-practice
@@ -39,7 +39,7 @@ jobs:
       - name: Upload windows build to itch
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
-          butlerApiKey: ${{ secrets.ITCH_IO }}
+          butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
           gameData: ./bin/win/win.zip
           itchUsername: random7
           itchGameId: godot-practice
