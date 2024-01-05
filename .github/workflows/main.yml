@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      - name: Build Godot
+      - name: Godot Headless Build
         # You may pin to the exact commit or the version.
-        # uses: yeslayla/build-godot-action@11589640849ce5bd1bab945c694bb418cb06cb15
-        uses: yeslayla/build-godot-action@v1.4.1
+        # uses: robpc/godot-export-action@2f0e808a7acdd7b4d60bc9eeb57379ee9a6b51ab
+        uses: robpc/godot-export-action@v4.2-0
         with:
-          # Name of the exported binary
-          name: godot-prac
-          # Name of the preset in `export_presets.cfg` to use
+          # name of the export preset
           preset: windowsDesktop
+          # export path for the executable
+          export_path: ..\build\godot.exe          
