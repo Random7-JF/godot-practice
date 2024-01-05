@@ -10,11 +10,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - preset: html
+          - preset: Web
             export_file: index.html
-          - preset: windows
+          - preset: WindowsDesktop
             export_file: godot-prac.exe
-          - preset: linux
+          - preset: Linux/X11
             export_file: godot-prac
     runs-on: ubuntu-latest
     steps:
