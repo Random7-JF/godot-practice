@@ -21,27 +21,15 @@ jobs:
           godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
           # The path relative to the root of the git repository that contains the "project.godot" file.
           relative_project_path: ./
-          create_release: true
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # If "true", exported files will be archived into a ".zip" file.
-          #archive_output: true
-          # If "true", files that are archived will be placed in a root folder within the archive.
-          #archive_root_folder: ./
-          # If "true", the Godot executable and export templates will be cached in the GitHub Actions workspace.
-          #cache: false
-          # If provided, exports will be moved to this directory relative to the root of the Git repository. This setting is overridden by "use_preset_export_path".
-          #relative_export_path: ./
-          # If set to true, exports will be moved to directory defined in "export_presets.cfg" relative to "relative_project_path". Prioritized over "relative_export_path".
-          #use_preset_export_path: false
-          # The absolute path to the wine binary. If specified, Godot will use this to run rcedit to update Windows exe icons.
-          #wine_path: # optional, default is 
-          # If "true" Godot will export in debug mode.
-          #export_debug: false
-          # If "true" the --verbose flag will be added when exporting Godot projects.
-          #verbose: # optional
-          # Build using Godot 3 executable (NOTE: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.)
-          #use_godot_3: # optional
-          # Export project files as a .pck file.
-          #export_as_pack: # optional
-          
+          archive_output: true
+
+      # This release action has worked well for me. However, you can most likely use any release action of your choosing.
+      # https://github.com/ncipollo/release-action
+      - name: create release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: false
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
+            
