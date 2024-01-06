@@ -8,6 +8,8 @@ jobs:
   build:
     name: Godot Export
     runs-on: ubuntu-latest
+    # Add permission for release creation. Can be made narrower according to your needs
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
       - name: Godot Export
