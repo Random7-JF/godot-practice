@@ -25,5 +25,5 @@ jobs:
         uses: ncipollo/release-action@v1.12.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          generateReleaseNotes: false
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
+          tag: ${{ github.ref_name }}
