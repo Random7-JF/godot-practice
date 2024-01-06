@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Godot Export
+        id: export
         # You may pin to the exact commit or the version.
         # uses: firebelley/godot-export@b0b8d3e350b7e4c376a865057961fa36e8ec3005
         uses: firebelley/godot-export@v5.2.1
@@ -25,7 +26,6 @@ jobs:
           relative_project_path: ./
           # If "true", files that are archived will be placed in a root folder within the archive.
           archive_output: true
-          archive_root_folder: ./builds/
 
 
       # This release action has worked well for me. However, you can most likely use any release action of your choosing.
@@ -36,5 +36,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: false
           tag: ${{ github.ref_name }}
-          artifacts: ./builds/*
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
             
