@@ -26,4 +26,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
-          tag: ${{ github.ref_name }}
+          tag: ver-${{ github.sha }}
